@@ -7,7 +7,8 @@
 		"module": "commonjs",
 		"baseUrl": "./",
 		"paths": {
-			"@src/*": ["src/*"]
+			"@src/*": ["src/*"],
+			"@test/*": ["src/__tests__/*"]
 		},
 		"rootDirs": ["./src"],
 		"types": ["node", "ts-jest"],

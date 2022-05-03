@@ -1,12 +1,12 @@
-## @lucagoslar/graphql-request
+## @lucagoslar/graphql-fetch
 
 A small 📊QL client leveraging the fetch API. (~500 B)
 
-[![build package and run tests](https://github.com/lucagoslar/graphql-request/actions/workflows/main.yml/badge.svg)](https://github.com/lucagoslar/graphql-request/actions/workflows/main.yml)
+[![build package and run tests](https://github.com/lucagoslar/graphql-fetch/actions/workflows/main.yml/badge.svg)](https://github.com/lucagoslar/graphql-fetch/actions/workflows/main.yml)
 
 ## Index
 
-- [@lucagoslar/graphql-request](#lucagoslargraphql-request)
+- [@lucagoslar/graphql-fetch](#lucagoslargraphql-fetch)
 - [Index](#index)
 - [Usage](#usage)
 - [API](#api)
@@ -20,7 +20,7 @@ A small 📊QL client leveraging the fetch API. (~500 B)
 1. Import, instantiate and set up a client.
 
 ```ts
-import { GraphQLClient } from '@lucagoslar/graphql-request';
+import { GraphQLClient } from '@lucagoslar/graphql-fetch';
 
 const resource: string = "ENDPOINT";
 const init: RequestInit = {
@@ -36,7 +36,7 @@ const client = new GraphQLClient(resource, init);
 2. Create a GraphQL query or mutation.
 
 ```ts
-import { gql } from '@lucagoslar/graphql-request';
+import { gql } from '@lucagoslar/graphql-fetch';
 
 const query = gql`
 	query Country($code: ID!) {

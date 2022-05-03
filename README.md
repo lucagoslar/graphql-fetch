@@ -1,6 +1,6 @@
 ## @lucagoslar/graphql-fetch
 
-A small 📊QL client leveraging the fetch API. (~500 B)
+A small 📊QL client leveraging the fetch API. (~365 B min + gz)
 
 [![build package and run tests](https://github.com/lucagoslar/graphql-fetch/actions/workflows/main.yml/badge.svg)](https://github.com/lucagoslar/graphql-fetch/actions/workflows/main.yml)
 

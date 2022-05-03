@@ -5,10 +5,10 @@
 	"compilerOptions": {
 		"target": "es2016",
 		"module": "commonjs",
+		"removeComments": true,
 		"baseUrl": "./",
 		"paths": {
-			"@src/*": ["src/*"],
-			"@test/*": ["src/__tests__/*"]
+			"@src/*": ["src/*"]
 		},
 		"rootDirs": ["./src"],
 		"types": ["node", "ts-jest"],

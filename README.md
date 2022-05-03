@@ -22,13 +22,13 @@ A small 📊QL client leveraging the fetch API. (~500 B)
 ```ts
 import { GraphQLClient } from '@lucagoslar/graphql-fetch';
 
-const resource: string = "ENDPOINT";
+const resource: string = 'ENDPOINT';
 const init: RequestInit = {
-  mode: "cors",
+	mode: 'cors',
 	headers: {
-    Authorization: "<auth-scheme>" "<credentials>"
-  },
-}
+		Authorization: '<auth-scheme> <credentials>',
+	},
+};
 
 const client = new GraphQLClient(resource, init);
 ```

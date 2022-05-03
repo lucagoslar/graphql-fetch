@@ -13,5 +13,8 @@
 		"ecmaVersion": 13,
 		"sourceType": "module"
 	},
+	"rules": {
+		"no-useless-catch": "off"
+	},
 	"plugins": ["@typescript-eslint", "prettier"]
 }

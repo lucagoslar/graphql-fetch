@@ -1,6 +1,6 @@
 ## @lucagoslar/graphql-fetch
 
-A small 📊QL client leveraging the fetch API. (~365 B min + gz)
+A small 📊QL client leveraging the fetch API. (~335 B min + gz)
 
 [![build package and run tests](https://github.com/lucagoslar/graphql-fetch/actions/workflows/main.yml/badge.svg)](https://github.com/lucagoslar/graphql-fetch/actions/workflows/main.yml)
 
@@ -10,10 +10,11 @@ A small 📊QL client leveraging the fetch API. (~365 B min + gz)
 - [Index](#index)
 - [Usage](#usage)
 - [API](#api)
-    - [new GraphQLClient(resource, init?)](#new-graphqlclientresource-init)
-    - [new GraphQLClient#request(query, variables?)](#new-graphqlclientrequestquery-variables)
+		- [new GraphQLClient(resource, init?)](#new-graphqlclientresource-init)
+		- [new GraphQLClient#request(query, variables?)](#new-graphqlclientrequestquery-variables)
+- [Bundle size](#bundle-size)
 - [Contribute](#contribute)
-  - [Getting started](#getting-started)
+	- [Getting started](#getting-started)
 
 ## Usage
 
@@ -73,6 +74,10 @@ try {
 
 - `query`: string
 - `variables`: Object
+
+## Bundle size
+
+Note that the bundle size depends on your configuration.
 
 ## Contribute
 

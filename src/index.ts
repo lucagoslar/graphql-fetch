@@ -1,22 +1,18 @@
 const gql = String.raw;
 
 class GraphQLClient {
-	resource;
-	init;
+	resource: string;
+	init: RequestInit;
 
 	constructor(resource: string, init: RequestInit = {}) {
-		this.resource = resource;
-		this.init = init;
-
 		init.method = init.method || 'post';
-
-		if (!init.headers) {
-			init.headers = {};
-		}
-
+		init.headers = init.headers || {};
 		(init.headers as Record<string, string>)['content-type'] =
 			(init.headers as Record<string, string>)['content-type'] ||
 			'application/json';
+
+		this.resource = resource;
+		this.init = init;
 	}
 
 	public async request(query: string, variables = {}) {

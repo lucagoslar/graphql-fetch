@@ -77,7 +77,7 @@ try {
 
 ## Bundle size
 
-Note that the bundle size depends on your configuration.
+Note that the bundle size depends on your build configuration.
 
 ## Contribute
 

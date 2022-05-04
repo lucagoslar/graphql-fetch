@@ -1,7 +1,7 @@
 {
 	"name": "@lucagoslar/graphql-fetch",
-	"version": "0.1.0",
-	"description": "A small 📊QL client leveraging the fetch API. (~365 B min + gz)",
+	"version": "0.1.1",
+	"description": "A small 📊QL client leveraging the fetch API. (~335 B min + gz)",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.js",
 	"files": [
@@ -40,8 +40,8 @@
 		}
 	],
 	"devDependencies": {
+		"@size-limit/esbuild": "^7.0.8",
 		"@size-limit/file": "^7.0.8",
-		"@size-limit/webpack": "^7.0.8",
 		"@types/jest": "^27.4.0",
 		"@types/node": "^17.0.8",
 		"@typescript-eslint/eslint-plugin": "^5.9.1",

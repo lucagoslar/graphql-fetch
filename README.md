@@ -1,6 +1,6 @@
 ## @lucagoslar/graphql-fetch
 
-A small 📊QL client leveraging the fetch API. (~335 B min + gz)
+A small optionally typed 📊QL client leveraging the fetch API. (~435 B min + gz)
 
 [![build package and run tests](https://github.com/lucagoslar/graphql-fetch/actions/workflows/main.yml/badge.svg)](https://github.com/lucagoslar/graphql-fetch/actions/workflows/main.yml)
 
@@ -10,11 +10,13 @@ A small 📊QL client leveraging the fetch API. (~335 B min + gz)
 - [Index](#index)
 - [Usage](#usage)
 - [API](#api)
-	- [new GraphQLClient(resource, init?)](#new-graphqlclientresource-init)
-	- [new GraphQLClient#request(query, variables?)](#new-graphqlclientrequestquery-variables)
+    - [new GraphQLClient(resource, init?)](#new-graphqlclientresource-init)
+    - [new GraphQLClient#customFetch(fetch)](#new-graphqlclientcustomfetchfetch)
+      - [new GraphQLClient#customFetch#request(query, variables?)](#new-graphqlclientcustomfetchrequestquery-variables)
+    - [new GraphQLClient#request(query, variables?)](#new-graphqlclientrequestquery-variables)
 - [Bundle size](#bundle-size)
 - [Contribute](#contribute)
-	- [Getting started](#getting-started)
+  - [Getting started](#getting-started)
 
 ## Usage
 
@@ -46,21 +48,38 @@ const query = gql`
 		}
 	}
 `;
-```
 
-3. Pass optional parameters when executing a request and handle the response.
-
-```ts
-let variables = {
+const variables = {
 	code: 'DE',
 };
+```
 
-try {
-	const result = await client.request(query, variables);
-	console.log(result); // { data: { country: { native: 'Deutschland' } }, errors: undefined }
-} catch (e) {
-	throw e;
-}
+1. Pass optional parameters when executing a request and handle the response.
+
+```ts
+const result = await client.request<{ country: { native: string } }>(
+	query,
+	variables
+);
+
+console.log(result); // { data: { country: { native: 'Deutschland' } }, errors: undefined }
+```
+
+Optionally add a custom fetch function.
+
+```ts
+// Example with SvelteKit
+// +page.server.ts
+
+import type { PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async (request) => {
+	const result = await client
+		.customFetch(request.fetch)
+		.request<{ country: { native: string } }>(query, variables);
+
+	return result;
+};
 ```
 
 ## API
@@ -69,6 +88,15 @@ try {
 
 - `resource`: string
 - `init`: RequestInit
+
+#### new GraphQLClient#customFetch(fetch)
+
+- `fetch`: fetch Function
+
+##### new GraphQLClient#customFetch#request(query, variables?)
+
+- `query`: string
+- `variables`: Object
 
 #### new GraphQLClient#request(query, variables?)
 

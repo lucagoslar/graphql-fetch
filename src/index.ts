@@ -1,8 +1,11 @@
 const gql = String.raw;
 
+type CustomFetch = typeof fetch;
+
 class GraphQLClient {
 	resource: string;
 	init: RequestInit;
+	#Fetch: typeof fetch = fetch;
 
 	constructor(resource: string, init: RequestInit = {}) {
 		init.method = init.method || 'post';
@@ -15,13 +18,30 @@ class GraphQLClient {
 		this.init = init;
 	}
 
-	public async request(query: string, variables = {}) {
+	public customFetch(fetch: CustomFetch) {
+		const client = new GraphQLClient(this.resource, this.init);
+		client.#Fetch = fetch;
+
+		return client;
+	}
+
+	public async request<TResponse>(
+		query: string,
+		variables = {}
+	): Promise<
+		| { data: TResponse; errors: undefined }
+		| { data: undefined; errors: unknown[] }
+	> {
 		this.init.body = JSON.stringify({ query, variables });
 
 		try {
-			return (await fetch(this.resource, this.init)).json();
+			return (await this.#Fetch(this.resource, this.init)).json();
 		} catch (e) {
-			return { errors: [e] };
+			return new Promise(() => {
+				return {
+					errors: [e],
+				};
+			});
 		}
 	}
 }

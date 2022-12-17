@@ -10,6 +10,10 @@ const query = gql`
 	}
 `;
 
+const variables = {
+	code: 'DE',
+};
+
 const client = new GraphQLClient('https://countries.trevorblades.com/graphql', {
 	mode: 'cors',
 	headers: {
@@ -17,14 +21,25 @@ const client = new GraphQLClient('https://countries.trevorblades.com/graphql', {
 	},
 });
 
-it('should fetch info on Germany', async () => {
-	try {
-		const response = await client.request(query, { code: 'DE' });
+describe('should fetch info on Germany', () => {
+	it('using native fetch', async () => {
+		const response = await client.request<{ country: { native: string } }>(
+			query,
+			variables
+		);
 
 		expect(JSON.stringify(response)).toEqual(
 			JSON.stringify({ data: { country: { native: 'Deutschland' } } })
 		);
-	} catch (e) {
-		throw e;
-	}
+	});
+
+	it('using custom fetch', async () => {
+		const response = await client
+			.customFetch(fetch)
+			.request<{ country: { native: string } }>(query, variables);
+
+		expect(JSON.stringify(response)).toEqual(
+			JSON.stringify({ data: { country: { native: 'Deutschland' } } })
+		);
+	});
 });

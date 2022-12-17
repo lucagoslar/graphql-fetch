@@ -24,11 +24,10 @@
 		"url": "git+https://github.com/lucagoslar/graphql-fetch.git"
 	},
 	"keywords": [
-		"npm",
-		"boilerplate",
-		"workflow",
-		"typescript",
-		"jest"
+		"fetch",
+		"graphql",
+		"request",
+		"client"
 	],
 	"author": "Luca Goslar <47827429+lucagoslar@users.noreply.github.com>",
 	"license": "MIT",
